@@ -1,0 +1,29 @@
+<div [ngClass]="isPreview ? 'preview' : '' " class="note-header" (click)="editNote(true)" (focusout)="editNote(false)">
+    <div class="title-wrapper">
+        <div *ngIf="!isPreview" class="note-icon add-icon" (click)="addNote()"></div>
+        <div *ngIf="isEditable; else notEditableTitle" (focusout)="onTitleChange($event)" class="note-title"
+            contenteditable="true">{{note?.title}}</div>
+        <ng-template #notEditableTitle>
+            <div class="note-title" contenteditable="false">{{note?.title}}</div>
+        </ng-template>
+    </div>
+    <div class="note-icons">
+        <div *ngIf="!isPreview" (click)="viewNote()" class="note-icon view-icon"></div>
+        <div (click)="editNote(true)" class="note-icon edit-icon"></div>
+        <div (click)="deleteNote()" class="note-icon delete-icon"></div>
+    </div>
+</div>
+<div class="note-content" (click)="editNote(true)" (focusout)="editNote(false)">
+    <div *ngIf="isEditable; else notEditableText" (focusout)="onTextChange($event)" class="note-text"
+        contenteditable="true">
+        {{note?.text}}
+    </div>
+    <ng-template #notEditableText>
+        <div class="note-text" contenteditable="false">
+            {{note?.text}}
+        </div>
+    </ng-template>
+</div>
+<!-- <div *ngIf="note" class="note-tags-list">
+    <app-tag-filter *ngFor="let tag of note?.tags" [tag]="tag"></app-tag-filter>
+</div> -->

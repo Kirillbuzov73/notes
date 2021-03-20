@@ -1,0 +1,3 @@
+<div *ngIf="!notes.length" class="add-note" (click)="handleAdd()">ДОБАВИТЬ</div>
+<app-note *ngFor="let note of notes" [note]="note" (add)="handleAdd($event)" (delete)="handleDelete($event)"
+    (edit)="handleEdit($event)" (view)="handleView($event)" [isHighlighted]="selectedNoteId === note.noteId"></app-note>
