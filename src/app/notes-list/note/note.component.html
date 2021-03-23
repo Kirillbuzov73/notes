@@ -13,17 +13,13 @@
         <div (click)="deleteNote()" class="note-icon delete-icon"></div>
     </div>
 </div>
-<div class="note-content" (click)="editNote(true)" (focusout)="editNote(false)">
+<div [ngClass]="isPreview ? 'preview' : '' " class="note-content" (click)="editNote(true)" (focusout)="editNote(false)">
     <div *ngIf="isEditable; else notEditableText" (focusout)="onTextChange($event)" class="note-text"
         contenteditable="true">
         {{note?.text}}
     </div>
     <ng-template #notEditableText>
-        <div class="note-text" contenteditable="false">
-            {{note?.text}}
+        <div innerHTML="{{note?.text || '' | highlight : note?.tags}}" class="note-text" contenteditable="false">
         </div>
     </ng-template>
 </div>
-<!-- <div *ngIf="note" class="note-tags-list">
-    <app-tag-filter *ngFor="let tag of note?.tags" [tag]="tag"></app-tag-filter>
-</div> -->

@@ -24,7 +24,7 @@ export class NoteComponent implements OnInit {
     return this.isHighlighted ? '0 0 10px #0377fc' : '';
   }
   isEditable = false;
-
+  tags: string[] = [];
 
   constructor() { }
 
@@ -32,7 +32,7 @@ export class NoteComponent implements OnInit {
   }
 
   addNote(): void {
-    this.add.emit(this.note?.noteId);
+    this.add.emit();
   }
 
   onTitleChange(event: any): void {
@@ -47,7 +47,6 @@ export class NoteComponent implements OnInit {
   }
 
   editNote(isEditable: boolean): void {
-    console.log(isEditable);
     this.isEditable = isEditable;
   }
 
@@ -57,6 +56,13 @@ export class NoteComponent implements OnInit {
 
   onTextChange(event: any): void {
     if (this.note) {
+      let str = event.target.textContent;
+      const tagsArray = str.split('#');
+      this.note.tags = [];
+      for (let i = 1; i < tagsArray.length; i++) {
+        const tag = '#' + tagsArray[i]?.trim().split(' ')[0];
+        this.note.tags?.push(tag);
+      }
       this.note.text = event.target.textContent;
       this.edit.emit(this.note);
     }

@@ -1,0 +1,32 @@
+:host {
+    display: flex;
+    width: 150px;
+    height: 150px;
+    background-color: lightgrey;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    overflow: hidden;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+:host:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.8);
+
+    .add-icon {
+        background-image: url('/assets/add.svg');
+    }
+}
+
+.add-icon {
+    background-image: url('/assets/add-grey.svg');
+}
+
+.note-icon {
+    height: 50px;
+    width: 50px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}

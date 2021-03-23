@@ -18,12 +18,6 @@
     }
 }
 
-// :host:first-child:hover {
-//     .note-header .title-wrapper .add-icon {
-//         display: block;
-//     }
-// }
-
 .note-header {
     background-color: rgba(216, 211, 137, 0.8);
     height: 20px;
@@ -68,6 +62,11 @@
             .note-title {
                 font-size: 20px;
             }
+        }
+
+        .note-icon {
+            height: 22px;
+            width: 22px;
         }
     }
 
@@ -125,6 +124,12 @@
         border: none;
         outline: none;
         overflow-wrap: anywhere;
+    }
+
+    &.preview {
+        .note-text {
+            font-size: 21px;
+        }
     }
 }
 

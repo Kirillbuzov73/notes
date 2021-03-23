@@ -5,17 +5,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotesListComponent } from './notes-list/notes-list.component';
 import { NoteComponent } from './notes-list/note/note.component';
-import { MenuComponent } from './menu/menu.component';
-import { TagFilterComponent } from './notes-list/tag-filter/tag-filter.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HighlightPipe } from './highlight.pipe';
+import { TagsListComponent } from './tags-list/tags-list.component';
+import { EmptyNoteComponent } from './notes-list/empty-note/empty-note.component';
+import { TagComponent } from './tags-list/tag/tag.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotesListComponent,
     NoteComponent,
-    MenuComponent,
-    TagFilterComponent
+    TagComponent,
+    HighlightPipe,
+    TagsListComponent,
+    EmptyNoteComponent
   ],
   imports: [
     BrowserModule,

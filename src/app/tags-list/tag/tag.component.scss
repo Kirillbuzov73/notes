@@ -1,13 +1,19 @@
 :host {
     display: block;
-    height: 15px;
+    height: 20px;
     max-width: fit-content;
     border: 1px solid purple;
     border-radius: 5px;
     background-color: rgba(210, 163, 233, 0.877);
     padding: 3px;
-    font-size: 14px;
+    font-size: 16px;
     margin: 2px;
     text-overflow: ellipsis;
     overflow: hidden;
+    cursor: pointer;
+}
+
+:host:hover {
+    background-color: rgba(189, 48, 189, 0.918);
+    color: white;
 }

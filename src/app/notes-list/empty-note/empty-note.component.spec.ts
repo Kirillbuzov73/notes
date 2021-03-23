@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TagFilterComponent } from './tag-filter.component';
+import { EmptyNoteComponent } from './empty-note.component';
 
-describe('TagFilterComponent', () => {
-  let component: TagFilterComponent;
-  let fixture: ComponentFixture<TagFilterComponent>;
+describe('EmptyNoteComponent', () => {
+  let component: EmptyNoteComponent;
+  let fixture: ComponentFixture<EmptyNoteComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TagFilterComponent ]
+      declarations: [ EmptyNoteComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TagFilterComponent);
+    fixture = TestBed.createComponent(EmptyNoteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

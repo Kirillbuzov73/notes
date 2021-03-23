@@ -1,4 +1,8 @@
-<!-- <app-menu *ngIf="selectedNote" [note]="selectedNote"></app-menu> -->
-<app-note *ngIf="selectedNote" [note]="selectedNote" [isPreview]="true" (delete)="handleDelete($event)"
-    (edit)="handleEdit($event)"></app-note>
-<app-notes-list [notes]="updatedNotes" (selectNote)="handleView($event)"></app-notes-list>
+<app-tags-list [notes]="updatedNotes" (selectTag)="handleSelectTag($event)"></app-tags-list>
+<div class="notes-list">
+    <app-note *ngIf="selectedNote" [note]="selectedNote" [isPreview]="true" (delete)="handleDelete($event)"
+        (edit)="handleEdit($event)"></app-note>
+    <app-notes-list [notes]="updatedNotes" (selectNote)="handleView($event)" (updateNotes)="handleUpdateNotes($event)"
+        [selectedTags]="selectedTags">
+    </app-notes-list>
+</div>
