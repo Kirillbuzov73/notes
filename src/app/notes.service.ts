@@ -11,18 +11,18 @@ export class NotesService {
   constructor(private http: HttpClient) { }
 
   getNotes(): Observable<Note[]> {
-    return this.http.get<Note[]>('http://localhost:3000/api/notes');
+    return this.http.get<Note[]>('http://localhost:3456/api/notes');
   }
 
   postNote(note: Note): Observable<Note[]> {
-    return this.http.post<Note[]>('http://localhost:3000/api/edit-note', note);
+    return this.http.post<Note[]>('http://localhost:3456/api/edit-note', note);
   }
 
   addNote(): Observable<Note[]> {
-    return this.http.post<Note[]>('http://localhost:3000/api/add-note', {});
+    return this.http.post<Note[]>('http://localhost:3456/api/add-note', {});
   }
 
   deleteNote(noteId: string): Observable<Note[]> {
-    return this.http.post<Note[]>('http://localhost:3000/api/delete-note', { id: noteId });
+    return this.http.post<Note[]>('http://localhost:3456/api/delete-note', { id: noteId });
   }
 }
