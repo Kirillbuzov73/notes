@@ -5,8 +5,8 @@
     "ng": "ng",
     "start": "concurrently \"npm run start:server\" \"npm run start:client\"",
     "start:client": "ng serve -o",
-    "start:server": "nodemon server/app.js",
-    "build": "ng build",
+    "start:server": "nodemon server/server.js",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

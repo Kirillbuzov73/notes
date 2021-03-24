@@ -19,7 +19,7 @@ app.post("/api/add-note", express.json({ type: '*/*' }), function (req, res) {
                 newEmptyNote.noteId = (+updatedNotes[updatedNotes.length - 1].noteId + 1).toString();
             }
             updatedNotes.push(newEmptyNote);
-            fs.writeFile("server/notes.json", JSON.stringify(updatedNotes), (error, data) => {
+            fs.writeFile(__dirname + "/notes.json", JSON.stringify(updatedNotes), (error, data) => {
                 return res.status(200).json(updatedNotes);
             });
         },
@@ -39,7 +39,7 @@ app.post("/api/delete-note", express.json({ type: '*/*' }), function (req, res) 
                 for (let i = 0; i < updatedNotes.length; i++) {
                     if (noteIdToDelete === updatedNotes[i].noteId) {
                         updatedNotes.splice(i, 1);
-                        fs.writeFile("server/notes.json", JSON.stringify(updatedNotes), (error, data) => {
+                        fs.writeFile(__dirname + "/notes.json", JSON.stringify(updatedNotes), (error, data) => {
                             return res.status(200).json(updatedNotes);
                         });
                     }
@@ -68,14 +68,14 @@ app.post("/api/edit-note", express.json({ type: '*/*' }), function (req, res) {
                         newNote.noteId = (+updatedNotes[updatedNotes.length - 1].noteId + 1).toString();
                     }
                     updatedNotes.push(newNote);
-                    fs.writeFile("server/notes.json", JSON.stringify(updatedNotes), (error, data) => {
+                    fs.writeFile(__dirname + "/notes.json", JSON.stringify(updatedNotes), (error, data) => {
                         return res.status(200).json(updatedNotes);
                     });
                 } else {
                     for (let i = 0; i < updatedNotes.length; i++) {
                         if (newNote.noteId === updatedNotes[i].noteId) {
                             updatedNotes[i] = newNote;
-                            fs.writeFile("server/notes.json", JSON.stringify(updatedNotes), (error, data) => {
+                            fs.writeFile(__dirname + "/notes.json", JSON.stringify(updatedNotes), (error, data) => {
                                 return res.status(200).json(updatedNotes);
                             });
                         }
@@ -105,9 +105,16 @@ app.get("/api/notes", function (req, res) {
     );
 });
 
+app.use(express.static(__dirname + "/../dist/notes"));
+app.get("/*", (req, res) => {
+    res.sendFile("index.html", {
+        root: __dirname + "/../dist/notes"
+    });
+});
+
 function readNotes() {
     return new Promise((resolve, reject) => {
-        fs.readFile("server/notes.json",
+        fs.readFile(__dirname + "/notes.json",
             function (error, data) {
                 if (error) {
                     reject(error);
