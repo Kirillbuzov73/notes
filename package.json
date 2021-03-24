@@ -1,6 +1,9 @@
 {
   "name": "notes",
   "version": "0.0.0",
+  "engines": {
+    "node": "10.15.3"
+  },
   "scripts": {
     "ng": "ng",
     "start": "concurrently \"npm run start:server\" \"npm run start:client\"",
